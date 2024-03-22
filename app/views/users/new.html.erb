@@ -1,0 +1,47 @@
+<h1>New user (classic way)</h1>
+
+<form action="/users" method="post" accept-charset="UTF-8">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label for="user_nam">Name:</label>
+  <input type="text" id="user_name" name="user[name]"><br><br>
+  <label for="user_email">Email:</label>
+  <input type="text" id="user_email" name="user[email]"><br><br>
+  <label for="user_password">Password:</label>
+  <input type="password" id="user_password" name="user[password]"><br><br>
+  <input name="commit" type="submit" value="Submit">
+</form>
+
+<h1>New user (Railsy Way)</h1>
+
+<%= form_with model: @user do |form| %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :password, style: "display: block" %>
+    <%= form.text_field :password %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+<h1>New user (Rails Scaffold Way)</h1>
+
+<%= render "form", user: @user %>
+
+<br>
+
+<div>
+  <%= link_to "Back to users", users_path %>
+</div>
